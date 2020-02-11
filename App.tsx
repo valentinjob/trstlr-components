@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -26,45 +26,51 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import HorizontalPicker from './src/components/HorizontalPicker';
+import Snap from './src/components/Snap';
 
 declare var global: {HermesInternal: null | {}};
 
 const items = [
-    '-1',
-    '-1',
-    '-1',
-    '-1',
-  '1',
-  '2',
-  '3',
-  '4',
-  '1',
-  '2',
-  '3',
-  '4',
-  '1',
-  '2',
-  '3',
-  '4',
-  '1',
-  '2',
-  '3',
-  '4',
-  '-1',
-  '-1',
-  '-1',
-  '-1',
+    'C',
+    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',
 ];
 const itemWidth = 30;
 
 const itemsByLabels = items.map(it => ({label: it, value: it}));
 
 const App = () => {
+
+    const [selected, setSelected] = useState(0);
+
+  const renderItem = (item, active) => {
+    return (
+        <Text style={{ color: active ? 'blue': '#666666', fontSize: active ? 18 : 16}}>{item}</Text>
+    )
+  };
+
+  const onItemSelected = (item, ind) => {
+      console.log('setting selected', ind)
+        setSelected(ind);
+  };
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <HorizontalPicker initialIndex={4} itemWidth={50} items={itemsByLabels} itemSize={itemWidth} />
+        <Snap active={selected} itemWidth={80} items={items} renderItem={renderItem} onItemSelected={onItemSelected} />
       </SafeAreaView>
     </>
   );
