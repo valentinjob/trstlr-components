@@ -6,7 +6,14 @@ import styled from 'styled-components/native';
 // import Touchable from 'react-native-platform-touchable';
 import Carousel from 'react-native-snap-carousel';
 import LinearGradient from 'react-native-linear-gradient';
-import {StyleSheet, Touchable, TouchableOpacity, View} from 'react-native';
+import Feedback from 'react-native-haptic-feedback';
+import {
+  Animated,
+  StyleSheet,
+  Touchable,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 // react-native-snap-carousel doesn't support setting different opacities
 // for inactive items based on their distance from the active item, so we'll
@@ -30,13 +37,9 @@ const StartGradient = styled(LinearGradient).attrs({
 
 const EndGradient = styled(LinearGradient).attrs({
   pointerEvents: 'none',
-  colors: [
-    'white',
-    'transparent',
-    'white',
-  ],
+  colors: ['white', 'transparent', 'white'],
   start: {x: 0, y: 1},
-  end: { x: 1, y: 1},
+  end: {x: 1, y: 1},
 })`
   position: absolute;
   top: 0;
@@ -56,6 +59,9 @@ const ItemWrapper = styled(TouchableOpacity).attrs({
 export default class Snap extends Component {
   carouselRef = null;
 
+  previousScrollIndex = 0;
+  parking = 0;
+
   static defaultProps = {
     itemWidth: 60,
     visibleItemCount: 5,
@@ -69,7 +75,6 @@ export default class Snap extends Component {
 
   onSnapToItem = (index: number) => {
     this.props.onItemSelected(this.props.items[index], index);
-    console.log('snap')
   };
 
   renderItem = ({item, index}) => {
@@ -83,13 +88,26 @@ export default class Snap extends Component {
   };
 
   render() {
-    const {items, initialItem, itemWidth, visibleItemCount, active} = this.props;
-    console.log('active', active)
+    const {
+      items,
+      initialItem,
+      itemWidth,
+      visibleItemCount,
+      active,
+      onScroll,
+    } = this.props;
     return (
       <View style={styles.container}>
         <Carousel
           ref={ref => {
             this.carouselRef = ref;
+          }}
+          onScroll={() => {
+            if (this.carouselRef.currentIndex !== this.previousScrollIndex) {
+              this.previousScrollIndex = this.carouselRef.currentIndex;
+              // Vibrate!
+              Feedback.trigger('impactLight');
+            }
           }}
           data={items}
           firstItem={active}
@@ -97,11 +115,36 @@ export default class Snap extends Component {
           onSnapToItem={this.onSnapToItem}
           sliderWidth={visibleItemCount * itemWidth}
           itemWidth={itemWidth}
+          enableMomentum
+          onMomentumScrollEnd={event => {
+            console.log(this.parking);
+            if (this.parking > 0) {
+              this.parking = 0;
+              return;
+            }
+            this.parking++;
+
+            let scrollOffset =
+              (event &&
+                event.nativeEvent &&
+                event.nativeEvent.contentOffset &&
+                event.nativeEvent.contentOffset.x) ||
+              0;
+            if (event.nativeEvent.contentOffset.x < 0) {
+              scrollOffset = 0;
+            }
+            console.log('offset', event.nativeEvent.contentOffset.x)
+            const item = this.carouselRef._getActiveItem(scrollOffset);
+            // setTimeout(() => {
+              this.carouselRef._onTouchRelease(event);
+            // }, 300);
+            console.log('on momentum end', item)
+          }}
+          enableSnap={false}
           activeSlideOffset={20}
         />
-        {/*<StartGradient width={itemWidth} />*/}
         <View
-            pointerEvents={'none'}
+          pointerEvents={'none'}
           style={styles.focusBorder(itemWidth, (visibleItemCount - 1) / 2)}
         />
       </View>
@@ -117,10 +160,10 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 1,
     borderColor: '#255ED6',
-      height: '60%',
+    height: '60%',
     position: 'absolute',
     top: 18,
     left: width * offset,
-      width,
+    width,
   }),
 });
