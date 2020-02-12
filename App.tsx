@@ -27,21 +27,27 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import HorizontalPicker from './src/components/HorizontalPicker';
 import Snap from './src/components/Snap';
+import NativePicker from './src/components/NativePicker';
 
 declare var global: { HermesInternal: null | {} };
 
 const items = [
     'C',
-    'C#/Db',
-    'D',
-    'D#/Eb',
-    'E',
-    'F', 'F#/Gb',
-    'G',
-    'G#', 'Ab',
-    'A',
-    'A#', 'Bb',
-    'B',
+    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',    'C',
+    'C',
+    'C',
 ];
 
 const App = () => {
@@ -63,12 +69,17 @@ const App = () => {
             <SafeAreaView>
                 <Snap active={selected} itemWidth={80} items={items} renderItem={renderItem}
                       onItemSelected={onItemSelected} />
+                      <NativePicker style={styles.nativeView}/>
             </SafeAreaView>
         </>
     );
 };
 
 const styles = StyleSheet.create({
+    nativeView: {
+        height: 300,
+        width: 300
+    },
     scrollView: {
         backgroundColor: Colors.lighter,
     },

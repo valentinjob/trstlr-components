@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FDE4FF223F4960C000C63C9 /* CalendarViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE4FF123F4960C000C63C9 /* CalendarViewManager.swift */; };
+		0FDE4FF623F4968E000C63C9 /* CalendarViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE4FF523F4968E000C63C9 /* CalendarViewManager.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -18,6 +20,9 @@
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* horizontalPickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = horizontalPickerTests.m; sourceTree = "<group>"; };
+		0FDE4FF023F4960C000C63C9 /* horizontalPicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "horizontalPicker-Bridging-Header.h"; sourceTree = "<group>"; };
+		0FDE4FF123F4960C000C63C9 /* CalendarViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewManager.swift; sourceTree = "<group>"; };
+		0FDE4FF523F4968E000C63C9 /* CalendarViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarViewManager.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* horizontalPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = horizontalPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = horizontalPicker/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = horizontalPicker/AppDelegate.m; sourceTree = "<group>"; };
@@ -70,9 +75,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0FDE4FEF23F495A0000C63C9 /* native */ = {
+			isa = PBXGroup;
+			children = (
+				0FDE4FF123F4960C000C63C9 /* CalendarViewManager.swift */,
+				0FDE4FF023F4960C000C63C9 /* horizontalPicker-Bridging-Header.h */,
+				0FDE4FF523F4968E000C63C9 /* CalendarViewManager.m */,
+			);
+			path = native;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* horizontalPicker */ = {
 			isa = PBXGroup;
 			children = (
+				0FDE4FEF23F495A0000C63C9 /* native */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -176,6 +192,7 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = Y63N9XNQJX;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -273,6 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FDE4FF623F4968E000C63C9 /* CalendarViewManager.m in Sources */,
+				0FDE4FF223F4960C000C63C9 /* CalendarViewManager.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -298,6 +317,7 @@
 			baseConfigurationReference = A42D03CFDBA26F71AEBC6DD4 /* Pods-horizontalPicker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = Y63N9XNQJX;
@@ -310,6 +330,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vb.horizontalPicker;
 				PRODUCT_NAME = horizontalPicker;
+				SWIFT_OBJC_BRIDGING_HEADER = "native/horizontalPicker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -319,6 +342,7 @@
 			baseConfigurationReference = 5DEBF99C9566143707793DED /* Pods-horizontalPicker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y63N9XNQJX;
 				INFOPLIST_FILE = horizontalPicker/Info.plist;
@@ -330,6 +354,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vb.horizontalPicker;
 				PRODUCT_NAME = horizontalPicker;
+				SWIFT_OBJC_BRIDGING_HEADER = "native/horizontalPicker-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
