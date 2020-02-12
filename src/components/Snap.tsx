@@ -9,6 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Feedback from 'react-native-haptic-feedback';
 import {
   Animated,
+  Platform,
   StyleSheet,
   Touchable,
   TouchableOpacity,
@@ -117,28 +118,11 @@ export default class Snap extends Component {
           itemWidth={itemWidth}
           enableMomentum
           onMomentumScrollEnd={event => {
-            console.log(this.parking);
-            if (this.parking > 0) {
-              this.parking = 0;
-              return;
-            }
-            this.parking++;
-
-            let scrollOffset =
-              (event &&
-                event.nativeEvent &&
-                event.nativeEvent.contentOffset &&
-                event.nativeEvent.contentOffset.x) ||
-              0;
-            if (event.nativeEvent.contentOffset.x < 0) {
-              scrollOffset = 0;
-            }
-            console.log('offset', event.nativeEvent.contentOffset.x)
-            const item = this.carouselRef._getActiveItem(scrollOffset);
-            // setTimeout(() => {
+            if (Platform.OS === 'ios') {
               this.carouselRef._onTouchRelease(event);
-            // }, 300);
-            console.log('on momentum end', item)
+            } else {
+              this.carouselRef._snapToItem(this.carouselRef._activeItem);
+            }
           }}
           enableSnap={false}
           activeSlideOffset={20}

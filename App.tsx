@@ -32,25 +32,17 @@ declare var global: { HermesInternal: null | {} };
 
 const items = [
     'C',
-    'C',
-    'C',
-    'C', 'C',
-    'C',
-    'C', 'C',
-    'C',
-    'C', 'C',
-    'C',
-    'C', 'C',
-    'C',
-    'C', 'C',
-    'C',
-    'C', 'C',
-    'C',
-    'C',
+    'C#/Db',
+    'D',
+    'D#/Eb',
+    'E',
+    'F', 'F#/Gb',
+    'G',
+    'G#', 'Ab',
+    'A',
+    'A#', 'Bb',
+    'B',
 ];
-const itemWidth = 30;
-
-const itemsByLabels = items.map(it => ({label: it, value: it}));
 
 const App = () => {
 
