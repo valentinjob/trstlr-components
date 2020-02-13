@@ -77,8 +77,8 @@ const App = () => {
 
 const styles = StyleSheet.create({
     nativeView: {
-        height: 300,
-        width: 300
+        height: '100%',
+        width: '100%',
     },
     scrollView: {
         backgroundColor: Colors.lighter,

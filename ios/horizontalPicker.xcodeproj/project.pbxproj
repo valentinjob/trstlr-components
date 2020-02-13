@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0FDE4FF223F4960C000C63C9 /* CalendarViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE4FF123F4960C000C63C9 /* CalendarViewManager.swift */; };
-		0FDE4FF623F4968E000C63C9 /* CalendarViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE4FF523F4968E000C63C9 /* CalendarViewManager.m */; };
+		0FDE4FF223F4960C000C63C9 /* PickerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE4FF123F4960C000C63C9 /* PickerViewManager.swift */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		9C1EBD6B305018380C05F112 /* libPods-horizontalPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CE0A984576398639DBA84A /* libPods-horizontalPicker.a */; };
+		CE40402723F53BB800D91836 /* PickerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE40402623F53BB800D91836 /* PickerViewManager.m */; };
+		CED4298B23F5446D003AA4C2 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4298923F5446D003AA4C2 /* PickerVC.swift */; };
+		CED4298C23F5446D003AA4C2 /* PickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED4298A23F5446D003AA4C2 /* PickerVC.xib */; };
+		CED429F623F5628E003AA4C2 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED429F523F5628E003AA4C2 /* PickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +24,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* horizontalPickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = horizontalPickerTests.m; sourceTree = "<group>"; };
 		0FDE4FF023F4960C000C63C9 /* horizontalPicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "horizontalPicker-Bridging-Header.h"; sourceTree = "<group>"; };
-		0FDE4FF123F4960C000C63C9 /* CalendarViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewManager.swift; sourceTree = "<group>"; };
-		0FDE4FF523F4968E000C63C9 /* CalendarViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarViewManager.m; sourceTree = "<group>"; };
+		0FDE4FF123F4960C000C63C9 /* PickerViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewManager.swift; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* horizontalPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = horizontalPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = horizontalPicker/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = horizontalPicker/AppDelegate.m; sourceTree = "<group>"; };
@@ -40,6 +42,10 @@
 		A42D03CFDBA26F71AEBC6DD4 /* Pods-horizontalPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-horizontalPicker.debug.xcconfig"; path = "Target Support Files/Pods-horizontalPicker/Pods-horizontalPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		B7889931B1BD9CDFBD214D36 /* libPods-horizontalPickerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-horizontalPickerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2EDBA6985CB93D4733FD5B /* Pods-horizontalPicker-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-horizontalPicker-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-horizontalPicker-tvOSTests/Pods-horizontalPicker-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		CE40402623F53BB800D91836 /* PickerViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerViewManager.m; sourceTree = "<group>"; };
+		CED4298923F5446D003AA4C2 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
+		CED4298A23F5446D003AA4C2 /* PickerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerVC.xib; sourceTree = "<group>"; };
+		CED429F523F5628E003AA4C2 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		DC83AF14E60176E3A8D4EC2A /* Pods-horizontalPicker-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-horizontalPicker-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-horizontalPicker-tvOSTests/Pods-horizontalPicker-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -78,9 +84,10 @@
 		0FDE4FEF23F495A0000C63C9 /* native */ = {
 			isa = PBXGroup;
 			children = (
-				0FDE4FF123F4960C000C63C9 /* CalendarViewManager.swift */,
+				CED4298823F54424003AA4C2 /* Picker */,
+				0FDE4FF123F4960C000C63C9 /* PickerViewManager.swift */,
 				0FDE4FF023F4960C000C63C9 /* horizontalPicker-Bridging-Header.h */,
-				0FDE4FF523F4968E000C63C9 /* CalendarViewManager.m */,
+				CE40402623F53BB800D91836 /* PickerViewManager.m */,
 			);
 			path = native;
 			sourceTree = "<group>";
@@ -158,6 +165,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CED4298823F54424003AA4C2 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				CED4298923F5446D003AA4C2 /* PickerVC.swift */,
+				CED4298A23F5446D003AA4C2 /* PickerVC.xib */,
+				CED429F523F5628E003AA4C2 /* PickerView.swift */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED4298C23F5446D003AA4C2 /* PickerVC.xib in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
@@ -290,10 +308,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FDE4FF623F4968E000C63C9 /* CalendarViewManager.m in Sources */,
-				0FDE4FF223F4960C000C63C9 /* CalendarViewManager.swift in Sources */,
+				CED4298B23F5446D003AA4C2 /* PickerVC.swift in Sources */,
+				0FDE4FF223F4960C000C63C9 /* PickerViewManager.swift in Sources */,
+				CED429F623F5628E003AA4C2 /* PickerView.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				CE40402723F53BB800D91836 /* PickerViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

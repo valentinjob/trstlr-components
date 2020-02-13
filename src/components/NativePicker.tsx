@@ -1,8 +1,6 @@
 import React from 'react';
 import { requireNativeComponent } from 'react-native';
 
-const CounterView = requireNativeComponent('CounterView');
+const PickerView = requireNativeComponent('PickerView');
 
-console.log(CounterView)
-
-export default CounterView;
+export default PickerView;
