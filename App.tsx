@@ -63,6 +63,7 @@ const App = () => {
     const onItemSelected = (item, ind) => {
         setSelected(ind);
     };
+    console.log('test')
     return (
         <>
             <StatusBar barStyle="dark-content" />
