@@ -1,22 +1,41 @@
 package com.horizontalpicker.nativeView
 
 import android.content.Context
+import android.graphics.Rect
+import android.util.DisplayMetrics
+import android.util.TypedValue
+import android.view.Gravity
+import android.view.View
+import android.view.WindowManager
 import android.widget.LinearLayout
+import androidx.annotation.Px
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
+import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import com.horizontalpicker.R
 
 
 
-class HorizontalPickerView(context: Context?) : LinearLayout(context) {
+class HorizontalPickerView(context: Context) : LinearLayout(context) {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-    private lateinit var viewManager: RecyclerView.LayoutManager
+    private var recyclerView: RecyclerView
+    private var viewAdapter: RecyclerView.Adapter<*>
+    private var viewManager: RecyclerView.LayoutManager
 
-    private var dataset = Array(5) { i -> (i * i).toString() }
+    private var dataset = Array(50) { i -> i.toString() }
+
+    fun getScreenWidth(context: Context): Int {
+        val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val dm = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(dm)
+        return dm.widthPixels
+    }
+
+    fun dpToPx(context: Context, value: Int) : Int {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value.toFloat(), context.resources.displayMetrics).toInt()
+    }
 
     init {
         inflate(context, R.layout.horizontal_picker, this)
@@ -36,10 +55,16 @@ class HorizontalPickerView(context: Context?) : LinearLayout(context) {
 
         }
 
-        val snapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(recyclerView)
+        val padding: Int = getScreenWidth(context)/ 2 - dpToPx(context, 40)
+        recyclerView.setPadding(padding, 0, padding, 0)
 
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = CenterLayoutManager(context).apply {
+            callback = object: CenterLayoutManager.OnItemSelectedListener {
+                override fun onItemSelected(layoutPosition: Int) {
+                    println(layoutPosition)
+                }
+            }
+        }
 
         recyclerView.layoutManager = layoutManager
 

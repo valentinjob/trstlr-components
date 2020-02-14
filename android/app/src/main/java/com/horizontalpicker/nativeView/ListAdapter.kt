@@ -15,10 +15,10 @@ class ListAdapter(private val myDataset: Array<String>) :
     // you provide access to all the views for a data item in a view holder.
     // Each data item is just a string in this case that is shown in a TextView.
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        lateinit var  textView: TextView
+        var  textView: TextView = itemView.findViewById(R.id.text_view_item)
+
         init {
-            textView = itemView.findViewById(R.id.text_view_item)
-            textView.layoutParams.height = 50
+//            textView.layoutParams.height = 50
         }
     }
 
@@ -31,7 +31,7 @@ class ListAdapter(private val myDataset: Array<String>) :
                 .inflate(R.layout.item_view, parent, false)
         // set the view's size, margins, paddings and layout parameters
 //        val textView = view.findViewById<TextView>(R.id.text_view_item)
-        view.layoutParams.height = 300
+//        view.layoutParams.height = 300
         return MyViewHolder(view)
     }
 
