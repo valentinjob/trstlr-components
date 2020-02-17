@@ -1,6 +1,7 @@
 package com.horizontalpicker.nativeView
 
 import android.content.Context
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.core.widget.TextViewCompat
@@ -21,6 +22,7 @@ class CenterLayoutManager(context: Context?) : LinearLayoutManager(context) {
 
     var callback: OnItemSelectedListener? = null
     var selectedView: TextView? = null
+    var selectedTextColor: String? = "#255ED6"
     private lateinit var recyclerView: RecyclerView
 
     override fun onAttachedToWindow(view: RecyclerView?) {
@@ -88,7 +90,7 @@ class CenterLayoutManager(context: Context?) : LinearLayoutManager(context) {
 
 
                 val childCenterX = getDecoratedLeft(child) + (getDecoratedRight(child) - getDecoratedLeft(child)) / 2
-                var newDistance = Math.abs(childCenterX - recyclerViewCenterX)
+                val newDistance = Math.abs(childCenterX - recyclerViewCenterX)
                 if (newDistance < minDistance) {
                     minDistance = newDistance
                     position = recyclerView.getChildLayoutPosition(child)
@@ -98,9 +100,6 @@ class CenterLayoutManager(context: Context?) : LinearLayoutManager(context) {
 
             // Notify on item selection
             val textView: TextView? = selectedChild?.findViewById(R.id.text_view_item)
-            textView?.apply {
-                setTextColor(resources.getColor(R.color.catalyst_redbox_background))
-            }
             selectedView = textView
             callback?.onItemSelected(position)
         } else {

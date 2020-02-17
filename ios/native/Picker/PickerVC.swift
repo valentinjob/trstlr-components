@@ -10,24 +10,28 @@ import UIKit
 
 class PickerVC: UIViewController {
   
-  @IBOutlet weak var img: UIImageView!
-  @IBOutlet weak var label: UILabel!
   @IBOutlet weak var picker: UIPickerView!
   
-  let pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
+  var pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
+  
+  var onItemChange: RCTDirectEventBlock? {
+    didSet {
+      selectItem(row: selectedItemIndex)
+    }
+  }
   
   let rotationAngle = -90 * (CGFloat.pi / 180)
   
   var elementWidth = CGFloat(90.0)
   let elementHeight = CGFloat(50.0)
   
+  var selectedItemIndex = 0
+    
   private let pickerSelectionIndicatorHeight: CGFloat = 62.0
 
   
     override func viewDidLoad() {
         super.viewDidLoad()
-      img.backgroundColor = UIColor.black
-      label.text = "test"
       picker.dataSource = self
       picker.delegate = self
       
@@ -37,8 +41,14 @@ class PickerVC: UIViewController {
       
       picker.transform = CGAffineTransform(rotationAngle: rotationAngle)
       picker.frame = CGRect(x: x - 150, y: y, width: picker.frame.width + 500, height: 100)
-
+      
     }
+  
+  func selectItem(row: Int) {
+    if (onItemChange != nil) {
+      onItemChange!(["itemIndex": row])
+    }
+  }
 
 
     /*
@@ -54,7 +64,6 @@ class PickerVC: UIViewController {
 }
 
 extension PickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
-
   
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
@@ -66,8 +75,9 @@ extension PickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    print(component)
+    selectItem(row: row)
   }
+  
   
   func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
     pickerView.subviews[1].isHidden = true

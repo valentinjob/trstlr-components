@@ -12,4 +12,8 @@ class PickerViewManager: RCTViewManager {
     let pickerView = PickerView()
     return pickerView
   }
+  
+  override class func requiresMainQueueSetup() -> Bool {
+    return true
+  }
 }

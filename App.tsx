@@ -9,17 +9,9 @@
  */
 
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Text, StatusBar} from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Snap from './src/components/Snap';
 import NativePicker from './src/components/nativePicker/NativePicker';
 
@@ -63,14 +55,19 @@ const App = () => {
     );
   };
 
-  const onItemSelected = (item, ind) => {
-    setSelected(ind);
+  const onItemSelected = (item: object) => {
+    console.log(item);
   };
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-          <NativePicker items={items} containerStyle={styles.nativeView} />
+        <NativePicker
+          onItemChange={onItemSelected}
+          items={items}
+          containerStyle={styles.nativeView}
+          selectedTextColor={'#255ED6'}
+        />
       </SafeAreaView>
     </>
   );
@@ -78,7 +75,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   nativeView: {
-    height: '100%',
+    height: 87,
     width: '100%',
   },
   scrollView: {

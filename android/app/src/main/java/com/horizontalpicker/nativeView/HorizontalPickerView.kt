@@ -1,32 +1,25 @@
 package com.horizontalpicker.nativeView
 
 import android.content.Context
-import android.graphics.Rect
 import android.util.DisplayMetrics
 import android.util.TypedValue
-import android.view.Gravity
-import android.view.View
 import android.view.WindowManager
 import android.widget.LinearLayout
-import androidx.annotation.Px
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SnapHelper
-import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import com.horizontalpicker.R
-
+import kotlin.reflect.KFunction1
 
 
 class HorizontalPickerView(context: Context) : LinearLayout(context) {
 
     private var recyclerView: RecyclerView
     private var viewAdapter: RecyclerView.Adapter<*>
-    private var viewManager: RecyclerView.LayoutManager
+
+    var layoutManager: CenterLayoutManager? = null
 
     private var items: Array<String>? = null
 
-//    private var dataset = Array(50) { i -> i.toString() }
+    private lateinit var onItemChange: KFunction1<@ParameterName(name = "id") String, Unit>
 
     constructor(context: Context, newItems: Array<String>?) : this(context) {
         items = newItems
@@ -39,8 +32,15 @@ class HorizontalPickerView(context: Context) : LinearLayout(context) {
         return dm.widthPixels
     }
 
-    fun setItems(view: HorizontalPickerView, newItems: Array<String>?) {
+    fun setItems(newItems: Array<String>?) {
         items = newItems
+
+        viewAdapter = ListAdapter(items)
+        recyclerView.swapAdapter(viewAdapter, true)
+    }
+
+    fun setOnItemChange(callback: KFunction1<@ParameterName(name = "id") String, Unit>) {
+        onItemChange = callback
     }
 
     fun dpToPx(context: Context, value: Int) : Int {
@@ -49,7 +49,6 @@ class HorizontalPickerView(context: Context) : LinearLayout(context) {
 
     init {
         inflate(context, R.layout.horizontal_picker, this)
-        viewManager = LinearLayoutManager(context)
         viewAdapter = ListAdapter(items)
 
         recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
@@ -58,7 +57,6 @@ class HorizontalPickerView(context: Context) : LinearLayout(context) {
             setHasFixedSize(true)
 
             // use a linear layout manager
-            layoutManager = viewManager
 
             // specify an viewAdapter (see also next example)
             adapter = viewAdapter
@@ -71,12 +69,13 @@ class HorizontalPickerView(context: Context) : LinearLayout(context) {
         val layoutManager = CenterLayoutManager(context).apply {
             callback = object: CenterLayoutManager.OnItemSelectedListener {
                 override fun onItemSelected(layoutPosition: Int) {
-                    println(layoutPosition)
+                    onItemChange(layoutPosition.toString())
                 }
             }
         }
 
         recyclerView.layoutManager = layoutManager
+        this.layoutManager = layoutManager
 
     }
 }
