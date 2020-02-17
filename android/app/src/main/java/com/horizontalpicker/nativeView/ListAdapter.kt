@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.horizontalpicker.R
 
-class ListAdapter(private val myDataset: Array<String>) :
+class ListAdapter(private val dataset: Array<String>?) :
         RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
     // Provide a reference to the views for each data item
@@ -39,9 +39,11 @@ class ListAdapter(private val myDataset: Array<String>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.text = myDataset[position]
+        if (dataset != null) {
+            holder.textView.text = dataset[position]
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = myDataset.size
+    override fun getItemCount() = dataset?.size ?: 0
 }

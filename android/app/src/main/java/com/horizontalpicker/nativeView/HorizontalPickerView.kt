@@ -24,13 +24,23 @@ class HorizontalPickerView(context: Context) : LinearLayout(context) {
     private var viewAdapter: RecyclerView.Adapter<*>
     private var viewManager: RecyclerView.LayoutManager
 
-    private var dataset = Array(50) { i -> i.toString() }
+    private var items: Array<String>? = null
+
+//    private var dataset = Array(50) { i -> i.toString() }
+
+    constructor(context: Context, newItems: Array<String>?) : this(context) {
+        items = newItems
+    }
 
     fun getScreenWidth(context: Context): Int {
         val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val dm = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(dm)
         return dm.widthPixels
+    }
+
+    fun setItems(view: HorizontalPickerView, newItems: Array<String>?) {
+        items = newItems
     }
 
     fun dpToPx(context: Context, value: Int) : Int {
@@ -40,7 +50,7 @@ class HorizontalPickerView(context: Context) : LinearLayout(context) {
     init {
         inflate(context, R.layout.horizontal_picker, this)
         viewManager = LinearLayoutManager(context)
-        viewAdapter = ListAdapter(dataset)
+        viewAdapter = ListAdapter(items)
 
         recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
             // use this setting to improve performance if you know that changes
