@@ -90,8 +90,8 @@ extension PickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
     label.textAlignment = .center
     label.transform = CGAffineTransform(rotationAngle: rotationAngle * -1)
     
-    let view = buildSelectionFrame(pickerView)
-    pickerView.addSubview(view)
+//    let view = buildSelectionFrame(pickerView)
+//    pickerView.addSubview(view)
     return label
   }
   

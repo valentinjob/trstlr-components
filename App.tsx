@@ -1,18 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, View, Text, StatusBar} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, StatusBar} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Snap from './src/components/Snap';
+// @ts-ignore
 import NativePicker from './src/components/nativePicker/NativePicker';
 
 const items = [
@@ -43,18 +33,6 @@ const items = [
 const App = () => {
   const [selected, setSelected] = useState(0);
 
-  const renderItem = (item, active) => {
-    return (
-      <Text
-        style={{
-          color: active ? 'blue' : '#666666',
-          fontSize: active ? 18 : 16,
-        }}>
-        {item}
-      </Text>
-    );
-  };
-
   const onItemSelected = (item: object) => {
     console.log(item);
   };
@@ -66,7 +44,6 @@ const App = () => {
           onItemChange={onItemSelected}
           items={items}
           containerStyle={styles.nativeView}
-          selectedTextColor={'#255ED6'}
         />
       </SafeAreaView>
     </>

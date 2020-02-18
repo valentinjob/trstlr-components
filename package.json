@@ -1,6 +1,8 @@
 {
-  "name": "horizontalPicker",
-  "version": "0.0.1",
+  "name": "react-native-trstlr-components",
+  "title": "React Native Trstls components",
+  "version": "1.0.0",
+  "main": "index.js",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -8,6 +10,15 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valentinjob/trstlr-components.git",
+    "baseUrl": "https://github.com/valentinjob/trstlr-components"
+  },
+  "author": {
+    "name": "Your Name",
+    "email": "yourname@email.com"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
@@ -45,5 +56,8 @@
       "json",
       "node"
     ]
-  }
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md"
 }
