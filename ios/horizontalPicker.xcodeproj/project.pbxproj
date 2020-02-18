@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0FDE4FF223F4960C000C63C9 /* PickerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE4FF123F4960C000C63C9 /* PickerViewManager.swift */; };
-		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		9C1EBD6B305018380C05F112 /* libPods-horizontalPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CE0A984576398639DBA84A /* libPods-horizontalPicker.a */; };
 		CE40402723F53BB800D91836 /* PickerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE40402623F53BB800D91836 /* PickerViewManager.m */; };
 		CED4298B23F5446D003AA4C2 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4298923F5446D003AA4C2 /* PickerVC.swift */; };
@@ -20,18 +16,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* horizontalPickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = horizontalPickerTests.m; sourceTree = "<group>"; };
 		0FDE4FF023F4960C000C63C9 /* horizontalPicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "horizontalPicker-Bridging-Header.h"; sourceTree = "<group>"; };
 		0FDE4FF123F4960C000C63C9 /* PickerViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewManager.swift; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* horizontalPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = horizontalPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = horizontalPicker/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = horizontalPicker/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = horizontalPicker/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = horizontalPicker/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = horizontalPicker/main.m; sourceTree = "<group>"; };
 		39CE0A984576398639DBA84A /* libPods-horizontalPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-horizontalPicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D59B7094764054CE20F875 /* Pods-horizontalPicker-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-horizontalPicker-tvOS.release.xcconfig"; path = "Target Support Files/Pods-horizontalPicker-tvOS/Pods-horizontalPicker-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		4E8986873B6A3D3C00C4268F /* libPods-horizontalPicker-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-horizontalPicker-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,13 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				0FDE4FEF23F495A0000C63C9 /* native */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
-				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
-				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = horizontalPicker;
 			sourceTree = "<group>";
@@ -238,8 +220,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED4298C23F5446D003AA4C2 /* PickerVC.xib in Resources */,
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,25 +291,11 @@
 				CED4298B23F5446D003AA4C2 /* PickerVC.swift in Sources */,
 				0FDE4FF223F4960C000C63C9 /* PickerViewManager.swift in Sources */,
 				CED429F623F5628E003AA4C2 /* PickerView.swift in Sources */,
-				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				CE40402723F53BB800D91836 /* PickerViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-			);
-			name = LaunchScreen.xib;
-			path = horizontalPicker;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
