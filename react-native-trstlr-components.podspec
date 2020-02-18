@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.authors      = { "Your Name" => "yourname@email.com" }
   s.platforms    = { :ios => "9.0" }
   s.source       = { :git => "https://github.com/valentinjob/trstlr-components.git", :tag => "#{s.version}" }
-  s.swift_version = '4.0'
+  s.swift_version = '5.0'
 
   s.source_files = "ios/**/*.{h,m,swift}"
   s.requires_arc = true
