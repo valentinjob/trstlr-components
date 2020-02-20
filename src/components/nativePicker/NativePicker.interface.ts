@@ -1,5 +1,5 @@
 export interface PickerViewProps {
   containerStyle: object;
-  items: [String];
-  onItemChange: (string: String) => object;
+  items: string[];
+  onItemChange: (string: String) => void;
 }
