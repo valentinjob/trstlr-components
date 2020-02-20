@@ -3,6 +3,7 @@
   "title": "React Native Trstls components",
   "version": "1.0.0",
   "main": "index.js",
+  "types": "index.d.ts",
   "description": "Useful UI components",
   "scripts": {
     "android": "react-native run-android",
