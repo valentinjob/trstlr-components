@@ -1,16 +1,19 @@
 {
-  "name": "react-native-trstlr-components",
+  "name": "trstlr-components",
   "title": "React Native Trstls components",
   "version": "1.0.0",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "lib/src/index.js",
+  "typings": "lib/src/index.d.ts",
   "description": "Useful UI components",
   "scripts": {
+    "xcode": "open playground/ios/playground.xcworkspace",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "node ./scripts/start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "pod-install": "pod install --project-directory=playground/ios",
+    "install-android": "node ./scripts/install-android"
   },
   "repository": {
     "type": "git",
@@ -33,7 +36,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
-    "@babel/runtime": "^7.6.2",
+    "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^0.0.5",
     "@types/jest": "^24.0.24",
     "@types/react-native": "^0.60.25",
@@ -45,6 +48,7 @@
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "react-test-renderer": "16.9.0",
+    "shell-utils": "1.x.x",
     "typescript": "^3.7.3"
   },
   "jest": {
