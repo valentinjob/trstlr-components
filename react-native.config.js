@@ -4,6 +4,8 @@ module.exports = {
       ios: {},
       android: {
         sourceDir: './lib/android/app/',
+        packageImportPath:
+          'import com.horizontalpicker.nativeView.HorizontalPickerPackage;',
       },
     },
     assets: [],
