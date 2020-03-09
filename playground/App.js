@@ -13,7 +13,10 @@ const App = () => {
           items={['C', 'D', 'B']}
           onItemChange={it => console.log(it)}
         />
-        <PianoKeyboard containerStyle={styles.container}/>
+        <PianoKeyboard
+          containerStyle={styles.container}
+          pressedKeys={{C0: 'thumb', 'C#0': 'index', Ab0: 'little'}}
+        />
       </SafeAreaView>
     </>
   );
@@ -26,7 +29,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-  }
+  },
 });
 
 export default App;
