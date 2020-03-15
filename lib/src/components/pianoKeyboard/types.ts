@@ -2,16 +2,26 @@ export interface PianoKeyboardProps {
   containerStyle: any;
   pressedKeys: PressedKeys;
   scrollEnabled: boolean;
+  startingPosition: number;
+  onKeysUpdate: Function;
 }
 
 export interface KeyImpactProviderProps {
   pressedKeys: PressedKeys;
+  children: Element[];
+  onKeyPress: Function;
 }
 
 export interface KeyProps {
   name: string;
   pressedBy?: string;
   containerStyle?: any;
+  onKeyPress?: Function;
+}
+
+export interface OnKeyPressPayload {
+  name: string;
+  active: boolean;
 }
 
 export interface PressedKeys {

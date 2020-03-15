@@ -1,9 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {pipe, filter, reduce} from 'lodash/fp';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 
 import {HorizontalPicker, PianoKeyboard} from 'trstlr-components';
 
 const App = () => {
+  const [pressedKeys, setPressedKeys] = useState([]);
+
+  const toPressedKeys = () => {
+    return pipe(
+      filter(it => it.active),
+      reduce((acc, it) => {
+        acc[it.name] = 'any';
+        return acc;
+      }, {}),
+    )(pressedKeys);
+  };
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -14,8 +27,12 @@ const App = () => {
           onItemChange={it => console.log(it)}
         />
         <PianoKeyboard
+          startingPosition={20}
           containerStyle={styles.container}
-          pressedKeys={{C0: 'thumb', 'C#0': 'index', Ab0: 'little'}}
+          pressedKeys={toPressedKeys(pressedKeys)}
+          onKeysUpdate={snapshot => {
+            setPressedKeys(snapshot);
+          }}
         />
       </SafeAreaView>
     </>
