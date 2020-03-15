@@ -24,10 +24,6 @@ export interface OnKeyPressPayload {
   active: boolean;
 }
 
-export interface KeysState {
-  [key: string]: OnKeyPressPayload;
-}
-
 export interface PressedKeys {
   C0?: string;
   'C#0'?: string;

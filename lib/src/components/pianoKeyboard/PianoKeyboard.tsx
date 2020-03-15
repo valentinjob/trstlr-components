@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
 import {StyleSheet, View, ScrollView, TouchableOpacity} from 'react-native';
 
-import {PianoKeyboardProps, KeyImpactProviderProps, KeyProps, OnKeyPressPayload, KeysState} from './types';
+import {PianoKeyboardProps, KeyImpactProviderProps, KeyProps, OnKeyPressPayload} from './types';
 
 const BlackKey: FC<KeyProps> = ({name, pressedBy, containerStyle, onKeyPress}) => {
   const [whiteKey, , octave] = name.split('/')[0].split('');
@@ -82,7 +82,7 @@ const PianoKeyboard: FC<PianoKeyboardProps> = ({
                                                  onKeysUpdate,
                                                }) => {
   const scrollRef = useRef<ScrollView>(null);
-  const [keysState, setKeysState] = useState<KeysState>({});
+  const [keysState, setKeysState] = useState({});
 
   useEffect(() => {
     if (startingPosition !== undefined) {
