@@ -14,9 +14,12 @@ const BlackKey: FC<KeyProps> = ({name, pressedBy, containerStyle, onKeyPress}) =
   if (pressedBy) {
     keyStyle.backgroundColor = FINGER_COLOR_MAP[pressedBy];
     keyStyle.borderColor = layoutColors.primaryBorderColor;
+  } else if (keyPressed) {
+    keyStyle.backgroundColor = layoutColors.anyBlackFingerColor;
+    keyStyle.borderColor = layoutColors.primaryBorderColor;
   }
 
-  return <TouchableOpacity style={keyStyle} activeOpacity={0.8} onPress={() => {
+  return <TouchableOpacity style={keyStyle} activeOpacity={1} onPress={() => {
     const updKeyStatus = !keyPressed;
     setKeyPressed(updKeyStatus);
     if (onKeyPress) onKeyPress(updKeyStatus);
@@ -247,7 +250,9 @@ const layoutColors = {
   middleFingerColor: '#B0FAEA',
   ringFingerColor: '#8f9dfa',
   littleFingerColor: '#fa9cf1',
-  anyFingerColor: '#eaeaea',
+
+  anyWhiteFingerColor: '#eaeaea',
+  anyBlackFingerColor: '#636363',
 };
 
 const FINGER_COLOR_MAP: {[key: string]: string} = {
@@ -256,7 +261,7 @@ const FINGER_COLOR_MAP: {[key: string]: string} = {
   middle: layoutColors.middleFingerColor,
   ring: layoutColors.ringFingerColor,
   little: layoutColors.littleFingerColor,
-  any: layoutColors.anyFingerColor,
+  any: layoutColors.anyWhiteFingerColor,
 };
 
 const KEY_IDX_MAP: {[key: string]: number} = {

@@ -27,7 +27,7 @@ const App = () => {
           onItemChange={it => console.log(it)}
         />
         <PianoKeyboard
-          startingPosition={20}
+          startingPosition={21}
           containerStyle={styles.container}
           pressedKeys={toPressedKeys(pressedKeys)}
           onKeysUpdate={snapshot => {
