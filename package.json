@@ -29,6 +29,7 @@
     "lodash": "^4.17.15",
     "react": "16.9.0",
     "react-native": "0.61.5",
+    "react-native-fs": "^2.16.6",
     "react-native-gesture-handler": "^1.5.6",
     "react-native-haptic-feedback": "^1.9.0",
     "react-native-linear-gradient": "^2.5.6",
