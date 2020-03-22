@@ -1,33 +1,24 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
 import {StyleSheet, View, ScrollView, TouchableOpacity} from 'react-native';
 
-import {PianoKeyboardProps, KeyImpactProviderProps, KeyProps, OnKeyPressPayload, KeysState} from './types';
+import {PianoKeyboardProps, KeyImpactProviderProps, KeyProps, OnKeyPressPayload, KeysState, PressedKeys} from './types';
 
 const BlackKey: FC<KeyProps> = ({name, pressedBy, containerStyle, onKeyPress}) => {
   const [whiteKey, , octave] = name.split('/')[0].split('');
-  const [keyPressed, setKeyPressed] = useState(false);
   const keyStyle = {
     ...containerStyle,
     ...styles.blackKey(parseInt(octave, 10), whiteKey),
   };
 
   if (pressedBy) {
-    keyStyle.backgroundColor = FINGER_COLOR_MAP[pressedBy];
-    keyStyle.borderColor = layoutColors.primaryBorderColor;
-  } else if (keyPressed) {
-    keyStyle.backgroundColor = layoutColors.anyBlackFingerColor;
+    keyStyle.backgroundColor = pressedBy === 'any' ? layoutColors.anyBlackFingerColor : FINGER_COLOR_MAP[pressedBy];
     keyStyle.borderColor = layoutColors.primaryBorderColor;
   }
 
-  return <TouchableOpacity style={keyStyle} activeOpacity={1} onPress={() => {
-    const updKeyStatus = !keyPressed;
-    setKeyPressed(updKeyStatus);
-    if (onKeyPress) onKeyPress(updKeyStatus);
-  }}/>;
+  return <TouchableOpacity style={keyStyle} activeOpacity={1} onPress={() => onKeyPress && onKeyPress(name)}/>;
 };
 
 const WhiteKey: FC<KeyProps> = ({name, pressedBy, containerStyle, onKeyPress}) => {
-  const [keyPressed, setKeyPressed] = useState(false);
   const keyStyle = {...styles.whiteKey};
   // TODO: use name for midi
   if (pressedBy) {
@@ -37,11 +28,7 @@ const WhiteKey: FC<KeyProps> = ({name, pressedBy, containerStyle, onKeyPress}) =
   return (
     <TouchableOpacity
       style={{...styles.whiteKeyContainer, ...containerStyle}}
-      onPress={() => {
-        const updKeyStatus = !keyPressed;
-        setKeyPressed(updKeyStatus);
-        if (onKeyPress) onKeyPress(updKeyStatus);
-      }}
+      onPress={() => onKeyPress && onKeyPress(name)}
       activeOpacity={0.6}>
       <View style={keyStyle}/>
     </TouchableOpacity>
@@ -51,12 +38,8 @@ const WhiteKey: FC<KeyProps> = ({name, pressedBy, containerStyle, onKeyPress}) =
 class KeyImpactProvider extends React.Component<KeyImpactProviderProps> {
   _getPressedByName(name: string): string | undefined {
     const names = name.split('/');
-    return names.map((it: string) => this.props.pressedKeys[it]).find(Boolean);
+    return [...names, name].map((it: string) => this.props.pressedKeys[it]).find(Boolean);
   }
-
-  _onKeyPress = (payload: OnKeyPressPayload) => {
-    this.props.onKeyPress(payload);
-  };
 
   // todo improve typings
   render() {
@@ -66,10 +49,7 @@ class KeyImpactProvider extends React.Component<KeyImpactProviderProps> {
       (child: React.ReactElement<KeyProps>) =>
         React.cloneElement<KeyProps>(child, {
           pressedBy: this._getPressedByName(child.props.name),
-          onKeyPress: (state: boolean) => this._onKeyPress({
-            name: child.props.name,
-            active: state,
-          }),
+          onKeyPress: (name: string) => this.props.onKeyPress(name),
         }),
     );
 
@@ -85,7 +65,7 @@ const PianoKeyboard: FC<PianoKeyboardProps> = ({
                                                  onKeysUpdate,
                                                }) => {
   const scrollRef = useRef<ScrollView>(null);
-  const [keysState, setKeysState] = useState<KeysState>({});
+  const [keysState, setKeysState] = useState<PressedKeys>(pressedKeys);
 
   useEffect(() => {
     if (startingPosition !== undefined) {
@@ -93,25 +73,32 @@ const PianoKeyboard: FC<PianoKeyboardProps> = ({
     }
   }, [startingPosition]);
 
+  useEffect(() => {
+    onKeysUpdate(keysState);
+  }, [keysState]);
+
   const scrollToPosition = () => {
     scrollRef.current?.scrollTo(0, (layoutProps.keyWidth * startingPosition) + layoutProps.margin, false);
   };
 
-  const updateKeyStates = (payload: OnKeyPressPayload) => {
+  const updateKeyStates = (key: string) => {
     const update = {
-      ...keysState, [payload.name]: {
-        active: payload.active,
-        name: payload.name,
-      },
+      ...keysState
     };
+
+    if (update.hasOwnProperty(key)) {
+      delete update[key];
+    } else {
+      update[key] = 'any';
+    }
+
     setKeysState(update);
-    onKeysUpdate(update);
   };
 
   return (
     <ScrollView ref={scrollRef} onLayout={scrollToPosition} horizontal={true} scrollEnabled={scrollEnabled}>
       <View style={{...styles.container, ...containerStyle}}>
-        <KeyImpactProvider pressedKeys={pressedKeys} onKeyPress={updateKeyStates}>
+        <KeyImpactProvider pressedKeys={keysState} onKeyPress={updateKeyStates}>
           <WhiteKey name={'C0'}/>
           <BlackKey name={'C#0/Db0'}/>
           <WhiteKey name={'D0'}/>

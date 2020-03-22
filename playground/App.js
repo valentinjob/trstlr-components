@@ -1,21 +1,12 @@
-import React, {useState} from 'react';
-import {pipe, filter, reduce} from 'lodash/fp';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 
 import {HorizontalPicker, PianoKeyboard} from 'trstlr-components';
 
 const App = () => {
-  const [pressedKeys, setPressedKeys] = useState([]);
+  const [pressedKeys, setPressedKeys] = useState({});
 
-  const toPressedKeys = () => {
-    return pipe(
-      filter(it => it.active),
-      reduce((acc, it) => {
-        acc[it.name] = 'any';
-        return acc;
-      }, {}),
-    )(pressedKeys);
-  };
+  useEffect(() => console.log(pressedKeys), [pressedKeys]);
 
   return (
     <>
@@ -29,7 +20,7 @@ const App = () => {
         <PianoKeyboard
           startingPosition={21}
           containerStyle={styles.container}
-          pressedKeys={toPressedKeys(pressedKeys)}
+          pressedKeys={{C3: 'any'}}
           onKeysUpdate={snapshot => {
             setPressedKeys(snapshot);
           }}
