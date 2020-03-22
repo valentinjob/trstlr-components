@@ -65,7 +65,6 @@ const PianoKeyboard: FC<PianoKeyboardProps> = ({
                                                  onKeysUpdate,
                                                }) => {
   const scrollRef = useRef<ScrollView>(null);
-  const [keysState, setKeysState] = useState<PressedKeys>(pressedKeys);
 
   useEffect(() => {
     if (startingPosition !== undefined) {
@@ -73,17 +72,13 @@ const PianoKeyboard: FC<PianoKeyboardProps> = ({
     }
   }, [startingPosition]);
 
-  useEffect(() => {
-    onKeysUpdate(keysState);
-  }, [keysState]);
-
   const scrollToPosition = () => {
     scrollRef.current?.scrollTo(0, (layoutProps.keyWidth * startingPosition) + layoutProps.margin, false);
   };
 
   const updateKeyStates = (key: string) => {
     const update = {
-      ...keysState
+      ...pressedKeys
     };
 
     if (update.hasOwnProperty(key)) {
@@ -92,13 +87,13 @@ const PianoKeyboard: FC<PianoKeyboardProps> = ({
       update[key] = 'any';
     }
 
-    setKeysState(update);
+    onKeysUpdate(update);
   };
 
   return (
     <ScrollView ref={scrollRef} onLayout={scrollToPosition} horizontal={true} scrollEnabled={scrollEnabled}>
       <View style={{...styles.container, ...containerStyle}}>
-        <KeyImpactProvider pressedKeys={keysState} onKeyPress={updateKeyStates}>
+        <KeyImpactProvider pressedKeys={pressedKeys} onKeyPress={updateKeyStates}>
           <WhiteKey name={'C0'}/>
           <BlackKey name={'C#0/Db0'}/>
           <WhiteKey name={'D0'}/>

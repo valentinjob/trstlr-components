@@ -20,7 +20,7 @@ const App = () => {
         <PianoKeyboard
           startingPosition={21}
           containerStyle={styles.container}
-          pressedKeys={{C3: 'any'}}
+          pressedKeys={pressedKeys}
           onKeysUpdate={snapshot => {
             setPressedKeys(snapshot);
           }}
