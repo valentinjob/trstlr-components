@@ -53,6 +53,9 @@
     "shell-utils": "1.x.x",
     "typescript": "^3.8.3"
   },
+  "peerDependencies": {
+    "react-native-fs": "^2.16.6"
+  },
   "jest": {
     "preset": "react-native",
     "moduleFileExtensions": [

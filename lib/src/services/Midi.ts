@@ -11,7 +11,16 @@ const MidiNative = NativeModules.MidiPlayer;
  * android: assets folder
  */
 
-const Midi = {
+export interface Midi {
+  load(path: string): Promise<any>;
+  playMidiNote(midi: number): void;
+  playMidiNotes(midis: number[]): void;
+  stopMidiNote(midi: number): void;
+  stopMidiNotes(midis: number[]): void;
+  unmute(): void;
+}
+
+const Midi: Midi = {
   /**
    * Loads midi soundfont
    * @param path
