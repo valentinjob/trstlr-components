@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import {Platform, SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 
 import {HorizontalPicker, PianoKeyboard, MidiPlayer} from 'trstlr-components';
 
@@ -8,9 +8,8 @@ const App = () => {
 
   useEffect(() => console.log(pressedKeys), [pressedKeys]);
 
-  // todo for testing only. remove once implemented
   const loadMidi = async () => {
-    await MidiPlayer.load('/Piano.sf2');
+    await MidiPlayer.load(Platform.OS === 'ios' ? '/Piano.sf2' : 'piano.sf2');
     const midis = [60, 65, 70];
     MidiPlayer.unmute();
 
