@@ -17,8 +17,7 @@ class HorizontalPickerPackage : ReactPackage {
 
     override fun createNativeModules(reactContext: ReactApplicationContext): MutableList<NativeModule> {
         return mutableListOf(
+                MidiPlayerModule(reactContext)
         )
     }
-
-
 }

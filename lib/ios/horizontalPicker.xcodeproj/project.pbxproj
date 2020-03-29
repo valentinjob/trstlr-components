@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F1A3FE22427A3ED00BD3DD6 /* MidiPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1A3FE12427A3ED00BD3DD6 /* MidiPlayer.swift */; };
+		0F1A3FE62427A45700BD3DD6 /* MidiPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1A3FE52427A45700BD3DD6 /* MidiPlayer.m */; };
+		0F1A3FED2427ACB900BD3DD6 /* AudioUnitMIDISynth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1A3FEB2427ACB900BD3DD6 /* AudioUnitMIDISynth.swift */; };
+		0F1A3FEE2427ACB900BD3DD6 /* AudioUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1A3FEC2427ACB900BD3DD6 /* AudioUtils.swift */; };
 		0FDE4FF223F4960C000C63C9 /* PickerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE4FF123F4960C000C63C9 /* PickerViewManager.swift */; };
 		9C1EBD6B305018380C05F112 /* libPods-horizontalPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CE0A984576398639DBA84A /* libPods-horizontalPicker.a */; };
 		CE40402723F53BB800D91836 /* PickerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE40402623F53BB800D91836 /* PickerViewManager.m */; };
@@ -18,6 +22,10 @@
 /* Begin PBXFileReference section */
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* horizontalPickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = horizontalPickerTests.m; sourceTree = "<group>"; };
+		0F1A3FE12427A3ED00BD3DD6 /* MidiPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiPlayer.swift; sourceTree = "<group>"; };
+		0F1A3FE52427A45700BD3DD6 /* MidiPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MidiPlayer.m; sourceTree = "<group>"; };
+		0F1A3FEB2427ACB900BD3DD6 /* AudioUnitMIDISynth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioUnitMIDISynth.swift; sourceTree = "<group>"; };
+		0F1A3FEC2427ACB900BD3DD6 /* AudioUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioUtils.swift; sourceTree = "<group>"; };
 		0FDE4FF023F4960C000C63C9 /* horizontalPicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "horizontalPicker-Bridging-Header.h"; sourceTree = "<group>"; };
 		0FDE4FF123F4960C000C63C9 /* PickerViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewManager.swift; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* horizontalPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = horizontalPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,9 +78,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0F1A3FE02427A3DA00BD3DD6 /* Midi */ = {
+			isa = PBXGroup;
+			children = (
+				0F1A3FEB2427ACB900BD3DD6 /* AudioUnitMIDISynth.swift */,
+				0F1A3FEC2427ACB900BD3DD6 /* AudioUtils.swift */,
+				0F1A3FE12427A3ED00BD3DD6 /* MidiPlayer.swift */,
+				0F1A3FE52427A45700BD3DD6 /* MidiPlayer.m */,
+			);
+			path = Midi;
+			sourceTree = "<group>";
+		};
 		0FDE4FEF23F495A0000C63C9 /* native */ = {
 			isa = PBXGroup;
 			children = (
+				0F1A3FE02427A3DA00BD3DD6 /* Midi */,
 				CED4298823F54424003AA4C2 /* Picker */,
 				0FDE4FF123F4960C000C63C9 /* PickerViewManager.swift */,
 				0FDE4FF023F4960C000C63C9 /* horizontalPicker-Bridging-Header.h */,
@@ -288,9 +308,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1A3FE22427A3ED00BD3DD6 /* MidiPlayer.swift in Sources */,
 				CED4298B23F5446D003AA4C2 /* PickerVC.swift in Sources */,
 				0FDE4FF223F4960C000C63C9 /* PickerViewManager.swift in Sources */,
+				0F1A3FED2427ACB900BD3DD6 /* AudioUnitMIDISynth.swift in Sources */,
+				0F1A3FE62427A45700BD3DD6 /* MidiPlayer.m in Sources */,
 				CED429F623F5628E003AA4C2 /* PickerView.swift in Sources */,
+				0F1A3FEE2427ACB900BD3DD6 /* AudioUtils.swift in Sources */,
 				CE40402723F53BB800D91836 /* PickerViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
